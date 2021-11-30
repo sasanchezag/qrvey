@@ -1,0 +1,6 @@
+{
+  "baseUrl": "https://www.saucedemo.com/",
+  "video": true,
+  "defaultCommandTimeout": 10000,
+  "experimentalSourceRewriting": true
+}
