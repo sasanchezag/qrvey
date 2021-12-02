@@ -26,8 +26,29 @@
 
 //LOGIN USERS
 Cypress.Commands.add('loginStandardUser', (username, password) => {
-  cy.get('#user_email').type(username)
-  cy.get('#user_password').type(password)
+  cy.get('[data-test="username"]').type(username)
+  cy.get('[data-test="password"]').type(password)
+  cy.get('[data-test="login-button"]').click()
+  cy.wait(1000)
+})
+
+Cypress.Commands.add('loginLockedUser', (username, password) => {
+  cy.get('[data-test="username"]').type(username)
+  cy.get('[data-test="password"]').type(password)
+  cy.get('[data-test="login-button"]').click()
+  cy.wait(1000)
+})
+
+Cypress.Commands.add('loginProblemUser', (username, password) => {
+  cy.get('[data-test="username"]').type(username)
+  cy.get('[data-test="password"]').type(password)
+  cy.get('[data-test="login-button"]').click()
+  cy.wait(1000)
+})
+
+Cypress.Commands.add('performanceGlitchUser', (username, password) => {
+  cy.get('[data-test="username"]').type(username)
+  cy.get('[data-test="password"]').type(password)
   cy.get('[data-test="login-button"]').click()
   cy.wait(1000)
 })

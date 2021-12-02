@@ -1,14 +1,14 @@
-describe('Loging process', () => {
+describe('Logout process', () => {
   before(() => {
     cy.clearLocalStorage()
     cy.clearCookies()
   })
 
   beforeEach(() => {
-    cy.fixture('standard_user.json').as('standardUser')
+    cy.fixture('users.json').as('standardUser')
   })
 
-//LOGIN STANDARD USER
+//LOGOUT STANDARD USER
   it('should logged a user', () => {
     let url = Cypress.config().baseUrl;
     cy.visit(url)
@@ -17,6 +17,13 @@ describe('Loging process', () => {
     cy.get('@standardUser').then((standardUser) => {
       cy.loginStandardUser(standardUser.username, standardUser.password)
     cy.wait(3000)
+
+    //LOGOUT STANDARD USER
+    cy.get('#react-burger-menu-btn').should('be.visible')
+    cy.get('#react-burger-menu-btn').click()
+    cy.get('#logout_sidebar_link').should('be.visible')
+    cy.get('#logout_sidebar_link').click()
+    cy.get('.login_logo').should('be.visible')
     })
   })
 
@@ -24,4 +31,3 @@ describe('Loging process', () => {
     cy.clearLocalStorage()
   })
 })
-
